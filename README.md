@@ -13,7 +13,7 @@ This project is an interactive character MAGE sheet generator that allows users 
 
 ## Installation
 
-[DEMO HERE](https://huggingface.co/spaces/cha0smagick/Mago_la_ascencion_character_generator): Official DEMO.
+## [DEMO HERE](https://huggingface.co/spaces/cha0smagick/Mago_la_ascencion_character_generator): ## Official DEMO.
 
 ## Contributions
 
