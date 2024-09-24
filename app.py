@@ -117,6 +117,38 @@ concepts = [
     "The Ethereal Guide", "The Awakened Seer", "The Harbinger of Truth", "The Eternal Nomad"
 ]
 
+sexes = [
+    "Male", "Female", "Non-binary"
+]
+
+morality_levels = [
+    "Good", "Neutral", "Evil"
+]
+
+hair_colors = [
+    "Black", "Brown", "Blonde", "Red", "Gray"
+]
+
+hair_styles = [
+    "Short", "Long", "Curly", "Straight", "Wavy"
+]
+
+eye_colors = [
+    "Blue", "Green", "Brown", "Hazel", "Gray"
+]
+
+ugliness_levels = [
+    "Repulsive", "Ugly", "Average", "Beautiful", "Extremely Beautiful"
+]
+
+facial_features = [
+    "A small scar on the cheek.", 
+    "Missing a tooth.", 
+    "An eye patch over one eye.", 
+    "Freckles across the nose.", 
+    "A large birthmark on the forehead."
+]
+
 # Función para generar un personaje
 def generate_character():
     quirks = [
@@ -136,6 +168,13 @@ def generate_character():
         "Affiliation": random.choice(affiliations),
         "Sect": random.choice(sects),
         "Concept": random.choice(concepts),
+        "Sex": random.choice(sexes),
+        "Morality": random.choice(morality_levels),
+        "Hair Color": random.choice(hair_colors),
+        "Hair Style": random.choice(hair_styles),
+        "Eye Color": random.choice(eye_colors),
+        "Ugliness Level": random.choice(ugliness_levels),
+        "Facial Features": random.choice(facial_features),
         "Description": generate_description(),
         "Background": generate_background(),
         "Attributes": {attr: random.randint(1, 5) for attr in [
@@ -339,7 +378,14 @@ if st.session_state.character_sheet:
     st.write(character_sheet)
 
     # Crear un prompt para la generación de la imagen
-    image_prompt = f"Create an image of {character_sheet['Name']}, a {character_sheet['Nature']} {character_sheet['Demeanor']} with the essence of {character_sheet['Essence']}. They are part of the {character_sheet['Affiliation']} and belong to the sect of {character_sheet['Sect']}. Concept: {character_sheet['Concept']}. {character_sheet['Description']}."
+    image_prompt = (
+        f"Create an image of {character_sheet['Name']}, a {character_sheet['Nature']} {character_sheet['Demeanor']} "
+        f"with the essence of {character_sheet['Essence']}. They are part of the {character_sheet['Affiliation']} "
+        f"and belong to the sect of {character_sheet['Sect']}. Concept: {character_sheet['Concept']}. "
+        f"They are a {character_sheet['Sex']} with {character_sheet['Hair Color']} hair that is {character_sheet['Hair Style']}. "
+        f"They have {character_sheet['Eye Color']} eyes and are considered {character_sheet['Ugliness Level']}. "
+        f"Facial features: {character_sheet['Facial Features']}. {character_sheet['Description']}."
+    )
 
     # Generar la imagen usando el prompt
     if st.button("Generate Image"):
@@ -388,57 +434,58 @@ if st.session_state.character_sheet:
             <p>Affiliation: {character_sheet["Affiliation"]}</p>
             <p>Sect: {character_sheet["Sect"]}</p>
             <p>Concept: {character_sheet["Concept"]}</p>
-            <p>Background: {character_sheet["Background"]}</p>
-            <p>Description: {character_sheet["Description"]}</p>
+            <p>Sex: {character_sheet["Sex"]}</p>
+            <p>Morality: {character_sheet["Morality"]}</p>
+            <p>Hair Color: {character_sheet["Hair Color"]}</p>
+            <p>Hair Style: {character_sheet["Hair Style"]}</p>
+            <p>Eye Color: {character_sheet["Eye Color"]}</p>
+            <p>Ugliness Level: {character_sheet["Ugliness Level"]}</p>
+            <p>Facial Features: {character_sheet["Facial Features"]}</p>
+            <h2>Description</h2>
+            <p>{character_sheet["Description"]}</p>
+            <h2>Background</h2>
+            <p>{character_sheet["Background"]}</p>
             <h2>Attributes</h2>
-            <table>
-                <tr><th>Attribute</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{attr}</td><td>{value}</td></tr>" for attr, value in character_sheet["Attributes"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Attributes'].items())}
+            </ul>
             <h2>Talents</h2>
-            <table>
-                <tr><th>Talent</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{talent}</td><td>{value}</td></tr>" for talent, value in character_sheet["Talents"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Talents'].items())}
+            </ul>
             <h2>Skills</h2>
-            <table>
-                <tr><th>Skill</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{skill}</td><td>{value}</td></tr>" for skill, value in character_sheet["Skills"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Skills'].items())}
+            </ul>
             <h2>Knowledges</h2>
-            <table>
-                <tr><th>Knowledge</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{knowledge}</td><td>{value}</td></tr>" for knowledge, value in character_sheet["Knowledges"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Knowledges'].items())}
+            </ul>
             <h2>Spheres</h2>
-            <table>
-                <tr><th>Sphere</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{sphere}</td><td>{value}</td></tr>" for sphere, value in character_sheet["Spheres"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Spheres'].items())}
+            </ul>
             <h2>Advantages</h2>
-            <table>
-                <tr><th>Type</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{advantage}</td><td>{value}</td></tr>" for advantage, value in character_sheet["Advantages"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Advantages'].items())}
+            </ul>
             <h2>Health</h2>
-            <table>
-                <tr><th>Health Level</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{health}</td><td>{value}</td></tr>" for health, value in character_sheet["Health"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Health'].items())}
+            </ul>
             <h2>Backgrounds</h2>
-            <table>
-                <tr><th>Background</th><th>Value</th></tr>
-                {''.join([f"<tr><td>{background}</td><td>{value}</td></tr>" for background, value in character_sheet["Backgrounds"].items()])}
-            </table>
+            <ul>
+                {''.join(f"<li>{key}: {value}</li>" for key, value in character_sheet['Backgrounds'].items())}
+            </ul>
             <h2>Other Traits</h2>
-            <p>Quirks: {character_sheet["Other Traits"]["Quirks"]}</p>
+            <p>Quirks: {character_sheet['Other Traits']['Quirks']}</p>
         </body>
         </html>
         """
         return html
 
-    # Botón para descargar el HTML
-    html = download_html(character_sheet)
-    b64 = base64.b64encode(html.encode()).decode()
-    href = f'<a href="data:text/html;base64,{b64}" download="character_sheet.html">Download Character Sheet</a>'
-    st.markdown(href, unsafe_allow_html=True)
+    if st.button("Download Character Sheet"):
+        html = download_html(character_sheet)
+        b64 = base64.b64encode(html.encode()).decode()  # Convertir a base64
+        href = f'<a href="data:text/html;base64,{b64}" download="character_sheet.html">Download Character Sheet</a>'
+        st.markdown(href, unsafe_allow_html=True)
