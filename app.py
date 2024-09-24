@@ -118,47 +118,310 @@ concepts = [
 ]
 
 sexes = [
-    "Male", "Female", "Non-binary"
+    "Male", "Female", "Non-binary",
+    "Agender", "Bigender", "Genderqueer", "Genderfluid", 
+    "Demiboy", "Demigirl", "Two-Spirit", "Androgynous", 
+    "Transgender", "Cisgender", "Intersex", "Neutrois", 
+    "Pangender", "Polygender", "Third Gender", "Gender Nonconforming", 
+    "Gender Variant", "Third Sex", "Agenderflux", 
+    "Gender Apathetic", "Gender Questioning", "Gender expansive", 
+    "Transmasculine", "Transfeminine", "Cross-dresser", 
+    "Femme", "Masc", "Soft Butch", "Hard Butch", 
+    "Gender Neutral", "Hijra", "Muxe", "Fa'afafine", 
+    "Kathoey", "Waria", "Bissu", "Bakla", 
+    "Femboy", "Shemale", "Tomboy", "Cishet", 
+    "Masculine of Center", "Feminine of Center", 
+    "Bi-genderfluid", "Intergender", "Demiflux", 
+    "Gendervoid", "Centrism", "Omnisexual"
 ]
 
 morality_levels = [
-    "Good", "Neutral", "Evil"
+    "Good",
+    "Very Good",
+    "Excellent",
+    "Virtuous",
+    "Noble",
+    "Benevolent",
+    "Altruistic",
+    "Kind",
+    "Compassionate",
+    "Heroic",
+    "Just",
+    "Fair",
+    "Honorable",
+    "Respectful",
+    "Decent",
+    "Moral",
+    "Neutral",
+    "Indifferent",
+    "Ambiguous",
+    "Uncertain",
+    "Moderate",
+    "Pragmatic",
+    "Cynical",
+    "Selfish",
+    "Apathetic",
+    "Rational",
+    "Calculating",
+    "Utilitarian",
+    "Deceptive",
+    "Manipulative",
+    "Unethical",
+    "Dishonorable",
+    "Disrespectful",
+    "Immoral",
+    "Malicious",
+    "Cruel",
+    "Corrupt",
+    "Sadistic",
+    "Unkind",
+    "Malevolent",
+    "Vile",
+    "Evil",
+    "Very Evil",
+    "Demonic",
+    "Monstrous",
+    "Abhorrent",
+    "Wicked",
+    "Despicable",
+    "Atrocious"
 ]
 
 hair_colors = [
-    "Black", "Brown", "Blonde", "Red", "Gray"
+    "Black", "Brown", "Blonde", "Red", "Gray",
+    "Dark Black", "Jet Black", "Soft Black",
+    "Chestnut Brown", "Chocolate Brown", "Light Brown",
+    "Golden Blonde", "Platinum Blonde", "Strawberry Blonde",
+    "Auburn", "Copper Red", "Burgundy Red",
+    "Ash Gray", "Silver Gray", "White",
+    "Dirty Blonde", "Caramel Blonde", "Honey Blonde",
+    "Dark Auburn", "Bright Red", "Mahogany",
+    "Deep Black", "Raven Black", "Earthy Brown",
+    "Warm Brown", "Cool Brown", "Light Ash Brown",
+    "Light Copper", "Golden Red", "Maple Brown",
+    "Mushroom Brown", "Pearl Blonde", "Sunset Blonde",
+    "Sandy Brown", "Rose Gold", "Lilac",
+    "Lavender", "Pastel Pink", "Mint Green",
+    "Steel Gray", "Slate Gray", "Dove Gray",
+    "Platinum Silver", "Onyx Black", "Chocolate Cherry",
+    "Bronze", "Deep Purple", "Electric Blue",
+    "Soft Peach", "Frosted Blonde", "Cocoa Brown"
 ]
 
 hair_styles = [
-    "Short", "Long", "Curly", "Straight", "Wavy"
+    "Short Black", "Short Brown", "Short Blonde", "Short Red", "Short Grey",
+    "Long Black", "Long Brown", "Long Blonde", "Long Red", "Long Grey",
+    "Curly Black", "Curly Brown", "Curly Blonde", "Curly Red", "Curly Grey",
+    "Straight Black", "Straight Brown", "Straight Blonde", "Straight Red", "Straight Grey",
+    "Wavy Black", "Wavy Brown", "Wavy Blonde", "Wavy Red", "Wavy Grey",
+    "Short Black and Blonde", "Short Brown and Blonde", "Short Black and Red", "Short Brown and Red", 
+    "Short Grey and White",
+    "Long Black and Blonde", "Long Brown and Blonde", "Long Black and Red", "Long Brown and Red", 
+    "Long Grey and White",
+    "Curly Black and Blonde", "Curly Brown and Blonde", "Curly Black and Red", "Curly Brown and Red", 
+    "Curly Grey and White",
+    "Straight Black and Blonde", "Straight Brown and Blonde", "Straight Black and Red", "Straight Brown and Red", 
+    "Straight Grey and White",
+    "Wavy Black and Blonde", "Wavy Brown and Blonde", "Wavy Black and Red", "Wavy Brown and Red", 
+    "Wavy Grey and White",
+    "Short Ombre Black and Brown", "Short Ombre Blonde and Red", "Long Ombre Black and Brown", "Long Ombre Blonde and Red",
+    "Curly Ombre Black and Brown", "Curly Ombre Blonde and Red", "Straight Ombre Black and Brown", "Straight Ombre Blonde and Red",
+    "Wavy Ombre Black and Brown", "Wavy Ombre Blonde and Red"
 ]
 
 eye_colors = [
-    "Blue", "Green", "Brown", "Hazel", "Gray"
+    "Blue", "Green", "Brown", "Hazel", "Gray",
+    "Light Blue", "Dark Blue", "Sky Blue", "Teal", "Turquoise",
+    "Emerald Green", "Olive Green", "Mint Green", "Sea Green", "Forest Green",
+    "Chocolate Brown", "Chestnut Brown", "Amber", "Caramel", "Mahogany",
+    "Light Hazel", "Dark Hazel", "Golden Hazel", "Green Hazel", "Brown Hazel",
+    "Silver Gray", "Charcoal Gray", "Steel Gray", "Pewter Gray", "Smoky Gray",
+    "Blue-Green", "Green-Blue", "Gray-Blue", "Gray-Green", "Brown-Green",
+    "Brown-Gray", "Hazel-Blue", "Hazel-Green", "Hazel-Brown", "Amber-Brown",
+    "Dark Green", "Light Gray", "Pale Blue", "Cyan", "Lavender",
+    "Violet", "Lilac", "Icy Blue", "Aqua", "Periwinkle",
 ]
 
 ugliness_levels = [
-    "Repulsive", "Ugly", "Average", "Beautiful", "Extremely Beautiful"
+    "Repulsive",                     # 1
+    "Horrifying",                    # 2
+    "Extremely Ugly",                # 3
+    "Ugly",                          # 4
+    "Below Average",                 # 5
+    "Average",                       # 6
+    "Mediocre",                      # 7
+    "Slightly Below Average",        # 8
+    "Neutral",                       # 9
+    "Slightly Above Average",        # 10
+    "Attractive",                    # 11
+    "Pretty",                        # 12
+    "Lovely",                        # 13
+    "Very Beautiful",                # 14
+    "Stunning",                      # 15
+    "Gorgeous",                      # 16
+    "Exquisite",                     # 17
+    "Radiant",                       # 18
+    "Charming",                      # 19
+    "Enchanting",                    # 20
+    "Dazzling",                      # 21
+    "Striking",                      # 22
+    "Mesmerizing",                   # 23
+    "Breathtaking",                  # 24
+    "Transcendent",                  # 25
+    "Angelically Beautiful",         # 26
+    "Divine",                        # 27
+    "Heavenly",                      # 28
+    "Otherworldly",                  # 29
+    "Irresistibly Beautiful",        # 30
+    "Beautifully Flawed",            # 31
+    "Vividly Unique",                # 32
+    "Ravishing",                     # 33
+    "Wildly Attractive",             # 34
+    "Gracefully Unconventional",     # 35
+    "Intriguingly Beautiful",        # 36
+    "Pleasingly Odd",                # 37
+    "Chic",                          # 38
+    "Fascinatingly Flawed",          # 39
+    "Stylishly Awkward",             # 40
+    "Artfully Imperfect",            # 41
+    "Eclectically Beautiful",         # 42
+    "Whimsically Attractive",         # 43
+    "Fantastically Flawed",          # 44
+    "Bizarrely Beautiful",           # 45
+    "Uniquely Enchanting",           # 46
+    "Strikingly Gorgeous",           # 47
+    "Exotically Beautiful",           # 48
+    "Radiantly Flawed",              # 49
+    "Astonishingly Attractive"       # 50
 ]
 
 facial_features = [
-    "A small scar on the cheek.", 
-    "Missing a tooth.", 
-    "An eye patch over one eye.", 
-    "Freckles across the nose.", 
-    "A large birthmark on the forehead."
+    "A small scar on the cheek.",
+    "Missing a tooth.",
+    "An eye patch over one eye.",
+    "Freckles across the nose.",
+    "A large birthmark on the forehead.",
+    "Deep wrinkles around the eyes.",
+    "A prominent dimple on the chin.",
+    "Redness in the cheeks.",
+    "A crooked smile.",
+    "A raised eyebrow indicating surprise.",
+    "Dark circles under the eyes.",
+    "A facial piercing on the eyebrow.",
+    "A frown indicating disapproval.",
+    "Tight lips showing annoyance.",
+    "A soft smile conveying warmth.",
+    "Eyes wide open showing shock.",
+    "Squinting eyes indicating suspicion.",
+    "Puffy cheeks from allergies.",
+    "A furrowed brow from concentration.",
+    "Twitching of the lips showing nervousness.",
+    "Blushing cheeks showing embarrassment.",
+    "A broad grin showing happiness.",
+    "Raised eyebrows indicating confusion.",
+    "A quivering lip indicating sadness.",
+    "A tilted head showing curiosity.",
+    "Smudged lipstick on the lips.",
+    "Frequent blinking indicating nervousness.",
+    "A smirk suggesting mischief.",
+    "A look of disbelief with narrowed eyes.",
+    "A gentle gaze conveying compassion.",
+    "A grimace indicating pain.",
+    "Biting of the lip showing anxiety.",
+    "A thoughtful expression with pursed lips.",
+    "A beaming smile showing joy.",
+    "Eyes rolling indicating annoyance.",
+    "A staring expression indicating focus.",
+    "A lowered head showing defeat.",
+    "A furrowed brow showing concern.",
+    "A raised chin indicating confidence.",
+    "A sarcastic smile indicating mockery.",
+    "A tense jaw indicating frustration.",
+    "A surprised expression with raised eyebrows.",
+    "Eyes sparkling with excitement.",
+    "A wide-eyed expression indicating fear.",
+    "Narrowed eyes suggesting scrutiny.",
+    "A blank stare indicating shock.",
+    "A playful grin showing friendliness.",
+    "A raised eyebrow suggesting disbelief.",
+    "A sulking expression indicating disappointment.",
+    "A content smile showing satisfaction.",
+    "A look of determination with clenched teeth.",
+    "A relaxed face indicating peace.",
+    "A concerned expression with a slight frown.",
+    "A smirk indicating self-satisfaction.",
+    "A thoughtful gaze indicating reflection."
 ]
 
 # Función para generar un personaje
 def generate_character():
     quirks = [
-        "Has a peculiar laugh that echoes in the quiet.",
-        "Collects unusual trinkets from every place visited.",
-        "Always wears mismatched socks as a personal statement.",
-        "Speaks in riddles to confuse and amuse others.",
-        "Has an irrational fear of ducks.",
-        "Is convinced they can communicate with ghosts."
-    ]
+    "Has a peculiar laugh that echoes in the quiet.",
+    "Collects unusual trinkets from every place visited.",
+    "Always wears mismatched socks as a personal statement.",
+    "Speaks in riddles to confuse and amuse others.",
+    "Has an irrational fear of ducks.",
+    "Is convinced they can communicate with ghosts.",
+    "Has a habit of counting steps while walking.",
+    "Refuses to eat anything that isn't a specific color.",
+    "Wears sunglasses indoors regardless of the occasion.",
+    "Constantly fidgets with a small object, like a rubber band.",
+    "Always speaks in a whisper, even in loud places.",
+    "Has a collection of rubber ducks in various sizes.",
+    "Can only write with a particular brand of pen.",
+    "Has a tendency to hum obscure songs when nervous.",
+    "Refuses to touch metal objects without gloves.",
+    "Always ties their shoes in a unique knot.",
+    "Insists on drinking from a specific type of cup.",
+    "Has a collection of unique bookmarks.",
+    "Uses overly dramatic hand gestures while speaking.",
+    "Can't stand the sound of chewing.",
+    "Has an obsession with a particular fictional character.",
+    "Writes daily in a journal but never looks back at it.",
+    "Always has to arrange their food in a specific pattern.",
+    "Has a habit of repeating phrases for emphasis.",
+    "Keeps a dream journal but never shares its contents.",
+    "Insists on wearing only clothing made from natural fibers.",
+    "Always carries a specific charm or amulet.",
+    "Has an unusual phobia of paper cuts.",
+    "Follows a strict routine for getting ready in the morning.",
+    "Can only sleep with a specific pillow arrangement.",
+    "Collects expired coupons and refuses to throw them away.",
+    "Always comments on the weather, regardless of the conversation.",
+    "Insists on listening to the same song on repeat for hours.",
+    "Has an obsession with a specific number.",
+    "Loses track of time while organizing their bookshelves.",
+    "Has a tendency to draw on their skin with a pen.",
+    "Keeps a stash of candy in odd places around the house.",
+    "Always wears a particular shade of nail polish.",
+    "Picks at their skin when anxious.",
+    "Can only focus while surrounded by clutter.",
+    "Writes letters to fictional characters.",
+    "Always makes a wish at every fountain they encounter.",
+    "Insists on saying a specific phrase before eating.",
+    "Never walks on cracks in the pavement.",
+    "Has a specific ritual for starting a new book.",
+    "Insists on drinking herbal tea before bed.",
+    "Follows a strict color scheme for their wardrobe.",
+    "Can only concentrate if there's white noise playing.",
+    "Keeps an extensive collection of postcards.",
+    "Only eats food in even numbers.",
+    "Has a tendency to talk to inanimate objects.",
+    "Is convinced that a certain song brings good luck.",
+    "Always carries a small plant in their bag.",
+    "Hoard old magazines and refuses to recycle them.",
+    "Wears a different hat for each day of the week.",
+    "Insists on telling a joke before every meeting.",
+    "Takes selfies with strangers during travels.",
+    "Keeps a list of every movie they've ever seen.",
+    "Must check the lock on the door three times before leaving.",
+    "Has a unique way of organizing their digital files.",
+    "Is fascinated by obscure trivia and facts.",
+    "Carries a special blanket for comfort.",
+    "Always keeps a diary of the weather.",
+    "Convinced that certain colors influence their mood.",
+    "Has a habit of collecting unusual seeds.",
+]
     
     character = {
         "Name": f"{random.choice(first_names)} {random.choice(last_names)}",
