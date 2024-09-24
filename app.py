@@ -623,7 +623,7 @@ def generate_background():
 # Función para generar una imagen a partir del prompt
 def generate_image(prompt):
     # Aquí debes llamar a la función adecuada de freeGPT para generar la imagen
-    return Client.create_generation("prodia", prompt)  # Ajusta esto si es necesario
+    return Client.create_generation("pollinations", prompt)  # Ajusta esto si es necesario
 
 # Inicializar la aplicación
 st.title("Character Creator for MAGE")
