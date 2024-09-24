@@ -1,6 +1,9 @@
 import streamlit as st
 import random
 import base64
+from freeGPT import Client  # Asegúrate de que esta es la importación correcta
+from PIL import Image
+from io import BytesIO
 
 # Definir listas de datos para la generación aleatoria
 first_names = ["Alex", "Jordan", "Taylor", "Morgan", "Jamie", "Casey"]
@@ -33,61 +36,26 @@ def generate_character():
         "Concept": random.choice(concepts),
         "Description": generate_description(),
         "Background": generate_background(),
-        "Attributes": {
-            "Intelligence": random.randint(1, 5),
-            "Wits": random.randint(1, 5),
-            "Resolve": random.randint(1, 5),
-            "Strength": random.randint(1, 5),
-            "Dexterity": random.randint(1, 5),
-            "Stamina": random.randint(1, 5),
-            "Presence": random.randint(1, 5),
-            "Manipulation": random.randint(1, 5),
-            "Composure": random.randint(1, 5),
-        },
-        "Talents": {
-            "Alertness": random.randint(1, 5),
-            "Athletics": random.randint(1, 5),
-            "Brawl": random.randint(1, 5),
-            "Empathy": random.randint(1, 5),
-            "Expression": random.randint(1, 5),
-            "Intimidation": random.randint(1, 5),
-            "Persuasion": random.randint(1, 5),
-            "Streetwise": random.randint(1, 5),
-            "Subterfuge": random.randint(1, 5),
-        },
-        "Skills": {
-            "Animal Ken": random.randint(1, 5),
-            "Crafts": random.randint(1, 5),
-            "Drive": random.randint(1, 5),
-            "Etiquette": random.randint(1, 5),
-            "Firearms": random.randint(1, 5),
-            "Melee": random.randint(1, 5),
-            "Performance": random.randint(1, 5),
-            "Stealth": random.randint(1, 5),
-            "Survival": random.randint(1, 5),
-        },
-        "Knowledges": {
-            "Academics": random.randint(1, 5),
-            "Computer": random.randint(1, 5),
-            "Investigation": random.randint(1, 5),
-            "Law": random.randint(1, 5),
-            "Linguistics": random.randint(1, 5),
-            "Medicine": random.randint(1, 5),
-            "Occult": random.randint(1, 5),
-            "Politics": random.randint(1, 5),
-            "Science": random.randint(1, 5),
-        },
-        "Spheres": {
-            "Correspondence": random.randint(1, 5),
-            "Entropy": random.randint(1, 5),
-            "Forces": random.randint(1, 5),
-            "Life": random.randint(1, 5),
-            "Matter": random.randint(1, 5),
-            "Mind": random.randint(1, 5),
-            "Prime": random.randint(1, 5),
-            "Space": random.randint(1, 5),
-            "Time": random.randint(1, 5),
-        },
+        "Attributes": {attr: random.randint(1, 5) for attr in [
+            "Intelligence", "Wits", "Resolve", "Strength", "Dexterity", 
+            "Stamina", "Presence", "Manipulation", "Composure"
+        ]},
+        "Talents": {talent: random.randint(1, 5) for talent in [
+            "Alertness", "Athletics", "Brawl", "Empathy", "Expression", 
+            "Intimidation", "Persuasion", "Streetwise", "Subterfuge"
+        ]},
+        "Skills": {skill: random.randint(1, 5) for skill in [
+            "Animal Ken", "Crafts", "Drive", "Etiquette", "Firearms", 
+            "Melee", "Performance", "Stealth", "Survival"
+        ]},
+        "Knowledges": {knowledge: random.randint(1, 5) for knowledge in [
+            "Academics", "Computer", "Investigation", "Law", 
+            "Linguistics", "Medicine", "Occult", "Politics", "Science"
+        ]},
+        "Spheres": {sphere: random.randint(1, 5) for sphere in [
+            "Correspondence", "Entropy", "Forces", "Life", 
+            "Matter", "Mind", "Prime", "Space", "Time"
+        ]},
         "Advantages": {
             "Backgrounds": {
                 "Resources": random.randint(1, 5),
@@ -127,7 +95,6 @@ def generate_description():
         "They can charm their way out of most situations with their charisma.",
         "Often reserved, they observe more than they speak, learning the secrets around them."
     ]
-    
     return random.choice(character_traits)
 
 # Función para generar un background de personaje basado en sus atributos
@@ -141,6 +108,11 @@ def generate_background():
         "An explorer seeking ancient artifacts."
     ]
     return random.choice(backgrounds)
+
+# Función para generar una imagen a partir del prompt
+def generate_image(prompt):
+    # Aquí debes llamar a la función adecuada de freeGPT para generar la imagen
+    return Client.create_generation("prodia", prompt)  # Ajusta esto si es necesario
 
 # Inicializar la aplicación
 st.title("Character Creator for MAGE")
@@ -156,6 +128,21 @@ if st.session_state.character_sheet:
     
     st.subheader("Character Sheet")
     st.write(character_sheet)
+
+    # Crear un prompt para la generación de la imagen
+    image_prompt = f"Create an image of {character_sheet['Name']}, a {character_sheet['Nature']} {character_sheet['Demeanor']} with the essence of {character_sheet['Essence']}. They are part of the {character_sheet['Affiliation']} and belong to the sect of {character_sheet['Sect']}. Concept: {character_sheet['Concept']}. {character_sheet['Description']}."
+
+    # Generar la imagen usando el prompt
+    if st.button("Generate Image"):
+        try:
+            image_response = generate_image(image_prompt)
+            if image_response:  # Verifica que la respuesta tenga una imagen
+                image = Image.open(BytesIO(image_response))  # Cargar la imagen desde la respuesta
+                st.image(image, caption=f"Image of {character_sheet['Name']}", use_column_width=True)
+            else:
+                st.error("Error generating image.")
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
 
     def download_html(character_sheet):
         html = f"""
@@ -221,13 +208,18 @@ if st.session_state.character_sheet:
             </table>
             <h2>Advantages</h2>
             <table>
-                <tr><th>Advantage</th><th>Value</th></tr>
+                <tr><th>Type</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{advantage}</td><td>{value}</td></tr>" for advantage, value in character_sheet["Advantages"].items()])}
             </table>
             <h2>Health</h2>
             <table>
                 <tr><th>Health Level</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{health}</td><td>{value}</td></tr>" for health, value in character_sheet["Health"].items()])}
+            </table>
+            <h2>Backgrounds</h2>
+            <table>
+                <tr><th>Background</th><th>Value</th></tr>
+                {''.join([f"<tr><td>{background}</td><td>{value}</td></tr>" for background, value in character_sheet["Backgrounds"].items()])}
             </table>
             <h2>Other Traits</h2>
             <p>Quirks: {character_sheet["Other Traits"]["Quirks"]}</p>
@@ -237,8 +229,7 @@ if st.session_state.character_sheet:
         return html
 
     # Botón para descargar el HTML
-    if st.button("Download Character Sheet as HTML"):
-        html = download_html(character_sheet)
-        b64 = base64.b64encode(html.encode()).decode()
-        href = f'<a href="data:text/html;base64,{b64}" download="character_sheet.html">Download your character sheet!</a>'
-        st.markdown(href, unsafe_allow_html=True)
+    html = download_html(character_sheet)
+    b64 = base64.b64encode(html.encode()).decode()
+    href = f'<a href="data:text/html;base64,{b64}" download="character_sheet.html">Download Character Sheet</a>'
+    st.markdown(href, unsafe_allow_html=True)
