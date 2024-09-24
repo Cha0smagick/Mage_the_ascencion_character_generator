@@ -6,14 +6,116 @@ from PIL import Image
 from io import BytesIO
 
 # Definir listas de datos para la generación aleatoria
-first_names = ["Alex", "Jordan", "Taylor", "Morgan", "Jamie", "Casey"]
-last_names = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia"]
-natures = ["Explorer", "Protector", "Rebel", "Visionary"]
-demeanors = ["Daring", "Reserved", "Charming", "Stern"]
-essences = ["Dynamic", "Static"]
-affiliations = ["Coven", "Coterie", "Circle", "Clan"]
-sects = ["The Camarilla", "Anarchs", "Independent", "Inconnu"]
-concepts = ["The Reluctant Hero", "The Fallen Angel", "The Seeker", "The Scholar"]
+first_names = [
+    "Alex", "Jordan", "Taylor", "Morgan", "Jamie", "Casey",
+    "Samantha", "Derek", "Robin", "Jessie", "Chris", "Kendall",
+    "Quinn", "Riley", "Taylor", "Dakota", "Hayden", "Avery",
+    "Skylar", "Emerson", "Parker", "Sage", "Tatum", "Reese",
+    "Cameron", "Blake", "Finley", "Rowan", "Jaden", "Hayley",
+    "Taylor", "Casey", "Phoenix", "Sydney", "Sloane", "Briar",
+    "Emery", "Kylie", "Aiden", "Charlie", "Sawyer", "Zoe"
+]
+
+last_names = [
+    "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia",
+    "Morrison", "Taylor", "Murphy", "Anderson", "Parker", "Harris",
+    "Martinez", "Clark", "Robinson", "Young", "Scott", "Hill",
+    "Green", "Adams", "Baker", "Nelson", "Carter", "Mitchell",
+    "Perez", "Hall", "Rivera", "Torres", "Sanchez", "Ramirez",
+    "Jenkins", "Wood", "Gray", "Hughes", "Price", "Washington",
+    "Butler", "Dixon", "Castillo", "Curtis", "Perry", "James"
+]
+
+natures = [
+    "Explorer", "Protector", "Rebel", "Visionary",
+    "The Caregiver", "The Leader", "The Outcast", "The Jester",
+    "The Sage", "The Innocent", "The Rebel", "The Hero",
+    "The Martyr", "The Survivor", "The Revolutionary", "The Scholar",
+    "The Thinker", "The Artisan", "The Strategist", "The Idealist",
+    "The Mystic", "The Seeker", "The Guardian", "The Anarch",
+    "The Puppetmaster", "The Manipulator", "The Dilettante", "The Conformist",
+    "The Realist", "The Fatalist", "The Loyalist", "The Trickster",
+    "The Warrior", "The Philosopher", "The Visionary", "The Sage",
+    "The Mentor", "The Visionary", "The Pacifist", "The Overachiever",
+    "The Wanderer", "The Shaman", "The Protector", "The Dreamer",
+    "The Outsider", "The Altruist", "The Creator", "The Sentinel",
+    "The Arbitrator", "The Heroic", "The Unseen", "The Quiet"
+]
+
+demeanors = [
+    "Daring", "Reserved", "Charming", "Stern",
+    "Introspective", "Imposing", "Mischievous", "Sympathetic",
+    "Stoic", "Charismatic", "Cunning", "Amiable",
+    "Discreet", "Sardonic", "Compassionate", "Skeptical",
+    "Bold", "Humorous", "Inquisitive", "Cautious",
+    "Noble", "Arrogant", "Witty", "Solitary",
+    "Flamboyant", "Pensive", "Protective", "Subdued",
+    "Confident", "Dramatic", "Pragmatic", "Thoughtful",
+    "Idealistic", "Tactful", "Defiant", "Skeptical",
+    "Empathetic", "Nonchalant", "Resilient", "Subtle",
+    "Passionate", "Assertive", "Dreamy", "Pragmatic",
+    "Eccentric", "Innovative", "Traditional", "Anarchic"
+]
+
+essences = [
+    "Dynamic", "Static",
+    "Entropic", "Liminal", "Feral", "Fixed",
+    "Fluid", "Mysterious", "Arcane", "Visceral",
+    "Transcendent", "Temporal", "Interdimensional", "Ethereal",
+    "Formless", "Formative", "Catalytic", "Refined",
+    "Raw", "Spiritual", "Profound", "Esoteric",
+    "Chaotic", "Cyclical", "Evolving", "Adaptive",
+    "Sentient", "Sentinel", "Aetheric", "Corporal",
+    "Somatic", "Resonant", "Transitory", "Abyssal",
+    "Informed", "Ineffable", "Vibrant", "Dimensional",
+    "Celestial", "Infernal", "Mythic", "Prosaic",
+    "Mystical", "Elemental", "Philosophical", "Causal"
+]
+
+affiliations = [
+    "Coven", "Coterie", "Circle", "Clan",
+    "Order of Hermes", "Virtual Adepts", "Sons of Ether", "Dreamspeakers",
+    "Verbena", "Akashic Brotherhood", "Cult of Ecstasy", "Hollow Ones",
+    "Sahajiya", "Euthanatos", "Order of the Invisible College", "Tremere",
+    "The Guardians of the Veil", "The Silver Ladder", "The Ordo Dracul", "The Akashics",
+    "The Hollow Ones", "The Progenitors", "The Sons of Ether", "The Dreamspeakers",
+    "The Verbena", "The Celestial Chorus", "The Order of Hermes", "The Order of the Silver Ladder",
+    "The Virtual Adepts", "The Cult of Ecstasy", "The Euthanatos", "The Thyrsus",
+    "The Akashic Brotherhood", "The Guardians of the Veil", "The Tremere", "The Silver Ladder",
+    "The Order of the Invisible College", "The Sons of Ether", "The Progenitors", "The Hollow Ones",
+    "The Seers of the Throne", "The Nephandi", "The Marauders", "The Ascended",
+    "The Circle of the Crone", "The Mystics", "The Order of the Silver Ladder", "The Ebonites"
+]
+
+sects = [
+    "The Camarilla", "Anarchs", "Independent", "Inconnu",
+    "The Ascension", "The Technocracy", "The Traditions", "The Syndicate",
+    "The Progenitors", "The Void Engineers", "The Syndicate", "The Collective",
+    "The Disparate", "The Enlightened", "The Nephandi", "The Marauders",
+    "The Celestial Chorus", "The Order of Hermes", "The Verbena", "The Dreamspeakers",
+    "The Euthanatos", "The Akashic Brotherhood", "The Cult of Ecstasy", "The Order of the Silver Ladder",
+    "The Guardians of the Veil", "The Hollow Ones", "The Sons of Ether", "The Order of the Invisible College",
+    "The Technocrats", "The Innovators", "The Artisan", "The Unseen",
+    "The Seekers", "The Traditionalists", "The Sentinels", "The Shadows",
+    "The Practitioners", "The Occultists", "The Exiles", "The Kin",
+    "The Forsaken", "The Watchers", "The Forgotten", "The Dreamers",
+    "The Acolytes", "The Explorers", "The Prophets", "The Liberators"
+]
+
+concepts = [
+    "The Reluctant Hero", "The Fallen Angel", "The Seeker", "The Scholar",
+    "The Chosen One", "The Prodigal Son", "The Suffering Saint", "The Vengeful Spirit",
+    "The Rebellious Outsider", "The Tragic Hero", "The Reluctant Leader", "The Unseen Savior",
+    "The Dark Knight", "The Sorrowful Prophet", "The Unlikely Hero", "The Tormented Soul",
+    "The Wayward Son", "The Forsaken Hero", "The Burdened Seeker", "The Visionary Leader",
+    "The Timeless Wanderer", "The Ascetic Mystic", "The Wounded Healer", "The Mad Genius",
+    "The Unconventional Thinker", "The Iconoclast", "The Keeper of Secrets", "The Altruistic Rebel",
+    "The Hidden Guardian", "The Disillusioned Dreamer", "The Insurgent", "The Ethereal Wanderer",
+    "The Reformed Shadow", "The Despondent Visionary", "The Fractured Reality", "The Lost Soul",
+    "The Fateful Encounter", "The Unwritten Legend", "The Broken Prophecy", "The Echo of Destiny",
+    "The Ascendant", "The Resilient Spirit", "The Guiding Light", "The Catalyst of Change",
+    "The Ethereal Guide", "The Awakened Seer", "The Harbinger of Truth", "The Eternal Nomad"
+]
 
 # Función para generar un personaje
 def generate_character():
