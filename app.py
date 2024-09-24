@@ -5,7 +5,6 @@ import base64
 # Definir listas de datos para la generación aleatoria
 first_names = ["Alex", "Jordan", "Taylor", "Morgan", "Jamie", "Casey"]
 last_names = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia"]
-genders = ["Male", "Female", "Non-binary", "Undefined"]
 natures = ["Explorer", "Protector", "Rebel", "Visionary"]
 demeanors = ["Daring", "Reserved", "Charming", "Stern"]
 essences = ["Dynamic", "Static"]
@@ -15,6 +14,15 @@ concepts = ["The Reluctant Hero", "The Fallen Angel", "The Seeker", "The Scholar
 
 # Función para generar un personaje
 def generate_character():
+    quirks = [
+        "Has a peculiar laugh that echoes in the quiet.",
+        "Collects unusual trinkets from every place visited.",
+        "Always wears mismatched socks as a personal statement.",
+        "Speaks in riddles to confuse and amuse others.",
+        "Has an irrational fear of ducks.",
+        "Is convinced they can communicate with ghosts."
+    ]
+    
     character = {
         "Name": f"{random.choice(first_names)} {random.choice(last_names)}",
         "Nature": random.choice(natures),
@@ -104,10 +112,23 @@ def generate_character():
             "Status": random.randint(1, 5),
         },
         "Other Traits": {
-            "Quirks": generate_random_quirk(),
+            "Quirks": random.choice(quirks),
         }
     }
     return character
+
+# Función para generar una descripción del personaje
+def generate_description():
+    character_traits = [
+        "They are exceptionally intelligent, often outsmarting their opponents.",
+        "With a heart of a protector, they stand firm against injustice.",
+        "Their rebellious nature leads them to challenge authority at every turn.",
+        "A visionary at heart, they can see possibilities where others see obstacles.",
+        "They can charm their way out of most situations with their charisma.",
+        "Often reserved, they observe more than they speak, learning the secrets around them."
+    ]
+    
+    return random.choice(character_traits)
 
 # Función para generar un background de personaje basado en sus atributos
 def generate_background():
@@ -120,27 +141,6 @@ def generate_background():
         "An explorer seeking ancient artifacts."
     ]
     return random.choice(backgrounds)
-
-# Función para generar una descripción basada en las características del personaje
-def generate_description():
-    return (f"{random.choice(['A', 'An'])} {random.choice(natures)} {random.choice(concepts)} who is "
-            f"{random.choice(demeanors)} and {random.choice(essences)}. They are affiliated with a {random.choice(affiliations)} "
-            f"and belong to the {random.choice(sects)} sect.")
-
-# Función para generar quirk aleatorio
-def generate_random_quirk():
-    quirks = [
-        "Always speaks in riddles.",
-        "Has a collection of odd trinkets.",
-        "Can't resist a good challenge.",
-        "Often loses track of time.",
-        "Has an unusual laugh.",
-        "Believes in omens and signs.",
-        "Tends to hum while working.",
-        "Is fascinated by insects.",
-        "Enjoys making up stories about people."
-    ]
-    return random.choice(quirks)
 
 # Inicializar la aplicación
 st.title("Character Creator for MAGE")
@@ -157,7 +157,7 @@ if st.session_state.character_sheet:
     st.subheader("Character Sheet")
     st.write(character_sheet)
 
-    def download_pdf(character_sheet):
+    def download_html(character_sheet):
         html = f"""
         <html>
         <head>
@@ -194,63 +194,51 @@ if st.session_state.character_sheet:
             <p>Concept: {character_sheet["Concept"]}</p>
             <p>Background: {character_sheet["Background"]}</p>
             <p>Description: {character_sheet["Description"]}</p>
-
             <h2>Attributes</h2>
             <table>
                 <tr><th>Attribute</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{attr}</td><td>{value}</td></tr>" for attr, value in character_sheet["Attributes"].items()])}
             </table>
-
             <h2>Talents</h2>
             <table>
                 <tr><th>Talent</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{talent}</td><td>{value}</td></tr>" for talent, value in character_sheet["Talents"].items()])}
             </table>
-
             <h2>Skills</h2>
             <table>
                 <tr><th>Skill</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{skill}</td><td>{value}</td></tr>" for skill, value in character_sheet["Skills"].items()])}
             </table>
-
             <h2>Knowledges</h2>
             <table>
                 <tr><th>Knowledge</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{knowledge}</td><td>{value}</td></tr>" for knowledge, value in character_sheet["Knowledges"].items()])}
             </table>
-
             <h2>Spheres</h2>
             <table>
                 <tr><th>Sphere</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{sphere}</td><td>{value}</td></tr>" for sphere, value in character_sheet["Spheres"].items()])}
             </table>
-
             <h2>Advantages</h2>
             <table>
                 <tr><th>Advantage</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{advantage}</td><td>{value}</td></tr>" for advantage, value in character_sheet["Advantages"].items()])}
             </table>
-
             <h2>Health</h2>
             <table>
                 <tr><th>Health Level</th><th>Value</th></tr>
                 {''.join([f"<tr><td>{health}</td><td>{value}</td></tr>" for health, value in character_sheet["Health"].items()])}
             </table>
-
             <h2>Other Traits</h2>
-            <table>
-                <tr><th>Trait</th><th>Value</th></tr>
-                <tr><td>Quirk</td><td>{character_sheet["Other Traits"]["Quirks"]}</td></tr>
-            </table>
+            <p>Quirks: {character_sheet["Other Traits"]["Quirks"]}</p>
         </body>
         </html>
         """
-        pdf_bytes = pdfkit.from_string(html, False)
-        return pdf_bytes
+        return html
 
-    # Botón para descargar el PDF
-    if st.button("Download Character Sheet as PDF"):
-        pdf_data = download_pdf(character_sheet)
-        b64 = base64.b64encode(pdf_data).decode('utf-8')
-        href = f'<a href="data:application/pdf;base64,{b64}" download="character_sheet.pdf">Download PDF</a>'
+    # Botón para descargar el HTML
+    if st.button("Download Character Sheet as HTML"):
+        html = download_html(character_sheet)
+        b64 = base64.b64encode(html.encode()).decode()
+        href = f'<a href="data:text/html;base64,{b64}" download="character_sheet.html">Download your character sheet!</a>'
         st.markdown(href, unsafe_allow_html=True)
